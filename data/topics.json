@@ -1,0 +1,30 @@
+{
+  "courses": [
+    {
+      "id": "neuropathology",
+      "title": "پاتولوژی اعصاب",
+      "icon": "brain",
+      "description": "آسیب نورون، تروما، عفونت، تومور و بیماری‌های عصب و عضله",
+      "topics": [
+        { "id": "neuro_injury", "title": "آسیب نورون و گلیا" },
+        { "id": "neuro_trauma", "title": "تروما و ضایعات عروقی" },
+        { "id": "neuro_infection", "title": "عفونت و دژنراتیو" },
+        { "id": "neuro_tumor", "title": "تومورهای CNS" },
+        { "id": "neuro_peripheral", "title": "عصب محیطی و عضله" }
+      ]
+    },
+    {
+      "id": "hematology",
+      "title": "پاتولوژی خون و لنفوئید",
+      "icon": "blood",
+      "description": "آنمی‌ها، همولیز، تالاسمی، WBC، لنفوم‌ها و لوسمی‌ها",
+      "topics": [
+        { "id": "heme_basics", "title": "مبانی آنمی و همولیز" },
+        { "id": "heme_thalassemia", "title": "تالاسمی‌ها" },
+        { "id": "heme_decreased", "title": "کاهش تولید و پلی‌سیتمی" },
+        { "id": "heme_wbc", "title": "WBC و لنفوئید" },
+        { "id": "heme_leukemia", "title": "لوسمی و MDS/MPN" }
+      ]
+    }
+  ]
+}
