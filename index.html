@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedEx – دوره‌های آموزشی</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 100 100" class="brand-icon">
+        <path d="M10 50 Q30 20 50 50 Q70 80 90 50" stroke="#0A4D68" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="#088395"/>
+      </svg>
+      MedEx
+    </a>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1>پلتفرم آموزش و آزمون پزشکی</h1>
+      <p>مرور سریع، آزمون هوشمند و بانک سوالات پاتولوژی</p>
+    </div>
+    <h2 class="page-title">دوره‌های آموزشی</h2>
+    <div id="coursesGrid" class="grid">
+      <div class="loading">در حال بارگذاری...</div>
+    </div>
+  </main>
+
+  <footer class="footer">MedEx Team</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script>renderCourses();</script>
+</body>
+</html>
