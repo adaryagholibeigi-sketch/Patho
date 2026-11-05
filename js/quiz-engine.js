@@ -65,7 +65,6 @@ function startExam() {
   document.getElementById('examRoom').hidden = false;
   document.getElementById('examResult').hidden = true;
 
-  // تایمر
   if (examState.timerInterval) clearInterval(examState.timerInterval);
   examState.timerInterval = setInterval(updateTimer, 1000);
   updateTimer();
@@ -87,20 +86,32 @@ function renderQuestion() {
   document.getElementById('examProgress').textContent = `سوال ${examState.currentIndex + 1} از ${total}`;
 
   const selected = examState.answers[q.id];
+  const answered = !!selected;
+
+  // در حالت آموزشی، تا زمانی که پاسخ داده نشده، هیچ گزینه‌ای رنگ نمی‌گیرد
   let optionsHtml = q.options.map(o => {
     let cls = 'option';
-    if (examState.mode === 'educational' && selected) {
+    if (examState.mode === 'educational' && answered) {
+      cls += ' locked';
       if (q.correctOptionIds.includes(o.id)) cls += ' correct';
       else if (selected === o.id) cls += ' wrong';
     } else if (selected === o.id) {
       cls += ' selected';
     }
-    return `<div class="${cls}" onclick="selectOption('${q.id}','${o.id}')">${o.text}</div>`;
+    const clickAttr = (examState.mode === 'educational' && answered)
+      ? '' // بعد از پاسخ، کلیک غیرفعال
+      : `onclick="selectOption('${q.id}','${o.id}')"`;
+    return `<div class="${cls}" ${clickAttr}>${o.text}</div>`;
   }).join('');
 
   let explanationHtml = '';
-  if (examState.mode === 'educational' && selected) {
-    explanationHtml = `<div class="explanation"><strong>توضیح پاسخ:</strong> ${q.explanation}</div>`;
+  if (examState.mode === 'educational' && answered) {
+    const isCorrect = q.correctOptionIds.includes(selected);
+    explanationHtml = `
+      <div class="explanation">
+        <strong>${isCorrect ? '✅ پاسخ صحیح' : '❌ پاسخ نادرست'}</strong><br>
+        <strong>توضیح:</strong> ${q.explanation}
+      </div>`;
   }
 
   document.getElementById('questionCard').innerHTML = `
@@ -109,7 +120,6 @@ function renderQuestion() {
     ${explanationHtml}
   `;
 
-  // دکمه‌های ناوبری
   const prevBtn = document.querySelector('.exam-nav .btn-secondary');
   const nextBtn = document.querySelector('.exam-nav .btn-primary');
   if (prevBtn) prevBtn.disabled = examState.currentIndex === 0;
@@ -117,22 +127,19 @@ function renderQuestion() {
 }
 
 function selectOption(qId, optId) {
+  // در حالت آموزشی، اگر قبلاً پاسخ داده شده، اجازه تغییر نده
   if (examState.mode === 'educational' && examState.answers[qId]) return;
   examState.answers[qId] = optId;
   renderQuestion();
 }
 
 function prevQuestion() {
-  if (examState.currentIndex > 0) {
-    examState.currentIndex--;
-    renderQuestion();
-  }
+  if (examState.currentIndex > 0) { examState.currentIndex--; renderQuestion(); }
 }
 
 function nextQuestion() {
   if (examState.currentIndex < examState.questions.length - 1) {
-    examState.currentIndex++;
-    renderQuestion();
+    examState.currentIndex++; renderQuestion();
   }
 }
 
