@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedEx – آزمون</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 100 100" class="brand-icon">
+        <path d="M10 50 Q30 20 50 50 Q70 80 90 50" stroke="#0A4D68" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="#088395"/>
+      </svg>
+      MedEx
+    </a>
+    <a href="index.html" class="back-link">← بازگشت به دوره‌ها</a>
+  </header>
+
+  <main class="container exam-container">
+    <!-- تنظیمات آزمون -->
+    <div id="examSetup">
+      <h2 class="page-title">تنظیمات آزمون</h2>
+      <div class="form-card">
+        <div class="form-group">
+          <label for="topicSelect">مبحث:</label>
+          <select id="topicSelect"></select>
+        </div>
+        <div class="form-group">
+          <label for="modeSelect">حالت آزمون:</label>
+          <select id="modeSelect">
+            <option value="educational">آموزشی (نمایش فوری پاسخ)</option>
+            <option value="simulation">شبیه‌سازی (نمایش پاسخ در پایان)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="countInput">تعداد سوال:</label>
+          <input type="number" id="countInput" value="5" min="1" max="100">
+        </div>
+        <button class="btn-primary" onclick="startExam()">شروع آزمون</button>
+        <p id="examError" class="error-msg" hidden></p>
+      </div>
+    </div>
+
+    <!-- اتاق آزمون -->
+    <div id="examRoom" hidden>
+      <div class="exam-header">
+        <span id="examProgress" class="progress-badge">سوال ۱ از ۵</span>
+        <span id="examTimer" class="timer-badge"></span>
+      </div>
+      <div id="questionCard" class="question-card"></div>
+      <div class="exam-nav">
+        <button class="btn-secondary" onclick="prevQuestion()">→ قبلی</button>
+        <button class="btn-primary" onclick="nextQuestion()">بعدی ←</button>
+      </div>
+      <button class="btn-finish" onclick="finishExam()">پایان آزمون و مشاهده نتیجه</button>
+    </div>
+
+    <!-- نتیجه -->
+    <div id="examResult" hidden>
+      <h2 class="page-title">نتیجه آزمون</h2>
+      <div id="resultSummary"></div>
+      <h3 class="review-title">مرور پاسخ‌ها</h3>
+      <div id="resultReview"></div>
+      <div class="result-actions">
+        <a href="index.html" class="btn-primary" style="display:inline-block;width:auto;padding:12px 32px;">بازگشت به دوره‌ها</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">MedEx Team</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/quiz-engine.js"></script>
+  <script>initExamPage();</script>
+</body>
+</html>
