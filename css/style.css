@@ -287,6 +287,7 @@ body {
   font-size: 0.9rem; color: var(--text-muted);
 }
 .bank-info strong { color: var(--primary); }
+
 .bank-item {
   background: var(--card-bg); border-radius: var(--radius); padding: 22px 26px;
   margin-bottom: 16px; box-shadow: var(--shadow); border: 1px solid var(--border);
@@ -302,11 +303,16 @@ body {
 .bank-tag.past { background: #E0F2F7; color: var(--secondary); }
 .bank-tag.difficulty { background: var(--bg); color: var(--text-muted); }
 .bank-stem { font-weight: 600; font-size: 0.98rem; margin-bottom: 14px; line-height: 1.9; }
+
 .bank-option {
   padding: 10px 16px; margin-bottom: 8px; border-radius: 8px;
-  background: var(--bg); font-size: 0.92rem; transition: all 0.2s;
+  background: var(--bg); font-size: 0.92rem; cursor: pointer;
+  transition: all 0.2s;
 }
+.bank-option:hover { background: #E0F2F7; border-color: var(--secondary); }
 .bank-option.correct { background: var(--success-bg); color: var(--success); font-weight: 600; }
+.bank-option.wrong { background: var(--danger-bg); color: var(--danger); }
+
 .bank-explanation {
   background: var(--warning-bg); border-right: 4px solid var(--warning);
   padding: 14px 18px; border-radius: 10px; margin-top: 14px;
