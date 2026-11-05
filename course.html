@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedEx – دوره</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 100 100" class="brand-icon">
+        <path d="M10 50 Q30 20 50 50 Q70 80 90 50" stroke="#0A4D68" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="50" cy="50" r="5" fill="#088395"/>
+      </svg>
+      MedEx
+    </a>
+    <a href="index.html" class="back-link">← بازگشت به دوره‌ها</a>
+  </header>
+
+  <main class="container">
+    <div id="courseHeader"></div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="summaries">📚 خلاصه‌ها</button>
+      <button class="tab-btn" data-tab="exam">📝 آزمون</button>
+      <button class="tab-btn" data-tab="bank">🗂️ بانک سوالات</button>
+    </div>
+    <div id="tabContent" class="tab-content">
+      <div class="loading">در حال بارگذاری...</div>
+    </div>
+  </main>
+
+  <footer class="footer">MedEx Team</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script>initCoursePage();</script>
+</body>
+</html>
