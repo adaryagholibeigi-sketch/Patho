@@ -44,6 +44,7 @@ async function initCoursePage() {
     });
   });
 
+  // نمایش اولیه تب خلاصه‌ها
   renderTab('summaries', courseId);
 }
 
@@ -51,6 +52,9 @@ function renderTab(tab, courseId) {
   const content = document.getElementById('tabContent');
   const course = getCourse(courseId);
   if (!course) return;
+
+  // پاک‌سازی محتوای قبلی
+  content.innerHTML = '';
 
   if (tab === 'summaries') {
     content.innerHTML = `<ul class="topic-list">${course.topics.map(t => {
@@ -60,58 +64,97 @@ function renderTab(tab, courseId) {
         <span>${s ? '✅ خلاصه موجود' : '—'}</span>
       </li>`;
     }).join('')}</ul>`;
-  } else if (tab === 'exam') {
+  } 
+  else if (tab === 'exam') {
     content.innerHTML = `
       <div class="form-card" style="text-align:center;">
         <p style="margin-bottom:20px;color:var(--text-muted);">آزمون خود را بر اساس مبحث و منبع مورد نظر تنظیم کنید.</p>
         <a href="exam.html?course=${courseId}" class="btn-primary" style="display:inline-block;width:auto;padding:14px 40px;">ورود به آزمون</a>
       </div>`;
-  } else if (tab === 'authored') {
+  } 
+  else if (tab === 'authored') {
     content.innerHTML = `
       <div class="bank-info">
-        📌 در این بخش فقط <strong>سوالات تألیفی</strong> (طراحی‌شده توسط تیم MedEx) نمایش داده می‌شود.
+        📌 در این بخش فقط <strong>سوالات تألیفی</strong> نمایش داده می‌شود. برای دیدن پاسخ، روی گزینه مورد نظر کلیک کنید.
       </div>
       <div id="bankList"></div>`;
     renderBank(courseId, 'authored_questions');
-  } else if (tab === 'past') {
+  } 
+  else if (tab === 'past') {
     content.innerHTML = `
       <div class="bank-info">
-        📌 در این بخش فقط <strong>سوالات ادوار گذشته</strong> (آزمون‌های میان‌ترم و پایان‌ترم) نمایش داده می‌شود.
+        📌 در این بخش فقط <strong>سوالات ادوار گذشته</strong> نمایش داده می‌شود. برای دیدن پاسخ، روی گزینه مورد نظر کلیک کنید.
       </div>
       <div id="bankList"></div>`;
     renderBank(courseId, 'past_questions');
   }
 }
 
+// ========== نمایش بانک سوالات (با قابلیت کلیک برای دیدن پاسخ) ==========
 function renderBank(courseId, sourceType) {
   const qs = getAllQuestions().filter(q => q.courseId === courseId && q.sourceType === sourceType);
   const list = document.getElementById('bankList');
+  if (!list) return;
+
   if (qs.length === 0) {
     list.innerHTML = '<p style="color:var(--text-muted);padding:20px;">سوالی در این بخش ثبت نشده است.</p>';
     return;
   }
 
   list.innerHTML = qs.map((q, i) => {
+    // ذخیره اطلاعات سوال در دیتاست برای دسترسی در تابع کلیک
+    const qJson = encodeURIComponent(JSON.stringify(q)); // برای جلوگیری از خطای کاراکترهای خاص
     const tags = `
       <span class="bank-tag ${sourceType === 'authored_questions' ? 'authored' : 'past'}">
         ${sourceType === 'authored_questions' ? '✍️ تألیفی' : '📋 ادوار گذشته'}
       </span>
       <span class="bank-tag difficulty">سطح: ${q.difficulty || '—'}</span>
     `;
-    return `<div class="bank-item">
+    return `<div class="bank-item" id="bank-item-${q.id}">
       <div class="bank-meta">${tags}</div>
       <p class="bank-stem">${i + 1}. ${q.stem}</p>
-      ${q.options.map(o => {
-        const isCorrect = q.correctOptionIds.includes(o.id);
-        return `<div class="bank-option ${isCorrect ? 'correct' : ''}">
-          ${isCorrect ? '✅ ' : ''}${o.text}
-        </div>`;
-      }).join('')}
-      <div class="bank-explanation">
+      <div class="bank-options-container" data-question='${qJson}'>
+        ${q.options.map(o => `
+          <div class="bank-option" onclick="revealBankAnswer('${q.id}','${o.id}', this)">
+            ${o.text}
+          </div>
+        `).join('')}
+      </div>
+      <div class="bank-explanation" id="explanation-${q.id}" style="display:none;">
         <strong>توضیح پاسخ:</strong> ${q.explanation}
       </div>
     </div>`;
   }).join('');
+}
+
+// تابع نمایش پاسخ در بانک سوالات
+function revealBankAnswer(qId, selectedOptId, clickedEl) {
+  const container = clickedEl.closest('.bank-options-container');
+  if (!container) return;
+  
+  // اگر قبلاً پاسخ داده شده، کاری نکن
+  if (container.dataset.answered === 'true') return;
+  container.dataset.answered = 'true';
+
+  // پیدا کردن سوال از دیتاست
+  const q = JSON.parse(decodeURIComponent(container.dataset.question));
+  
+  // هایلایت کردن گزینه‌ها
+  const options = container.querySelectorAll('.bank-option');
+  options.forEach((opt, idx) => {
+    const optId = q.options[idx].id;
+    if (q.correctOptionIds.includes(optId)) {
+      opt.classList.add('correct');
+      opt.innerHTML = '✅ ' + opt.innerHTML;
+    } else if (optId === selectedOptId) {
+      opt.classList.add('wrong');
+      opt.innerHTML = '❌ ' + opt.innerHTML;
+    }
+  });
+
+  // نمایش توضیح
+  const exp = document.getElementById(`explanation-${qId}`);
+  if (exp) exp.style.display = 'block';
 }
 
 // ========== نمایش خلاصه (تمیز و ساختاریافته) ==========
@@ -156,7 +199,7 @@ function showSummary(courseId, topicId) {
     </div>`;
 }
 
-// تابع تبدیل متن خام به ساختار تمیز
+// تابع تبدیل متن خام به ساختار تمیز HTML
 function parseSummaryContent(text) {
   if (!text) return '';
 
@@ -191,9 +234,7 @@ function parseSummaryContent(text) {
     if (line.startsWith('- ') || line.startsWith('* ')) {
       if (!inList) { html += '<ul>'; inList = true; }
       let item = line.substring(2);
-      // بولد کردن با **...**
       item = item.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      // کد درون خطی با `...`
       item = item.replace(/`(.+?)`/g, '<code>$1</code>');
       html += `<li>${item}</li>`;
       continue;
