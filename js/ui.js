@@ -63,60 +63,58 @@ function renderTab(tab, courseId) {
   } else if (tab === 'exam') {
     content.innerHTML = `
       <div class="form-card" style="text-align:center;">
-        <p style="margin-bottom:20px;color:var(--text-muted);">آزمون خود را بر اساس مبحث مورد نظر تنظیم کنید.</p>
+        <p style="margin-bottom:20px;color:var(--text-muted);">آزمون خود را بر اساس مبحث و منبع مورد نظر تنظیم کنید.</p>
         <a href="exam.html?course=${courseId}" class="btn-primary" style="display:inline-block;width:auto;padding:14px 40px;">ورود به آزمون</a>
       </div>`;
-  } else if (tab === 'bank') {
+  } else if (tab === 'authored') {
     content.innerHTML = `
-      <div style="margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <label style="font-weight:600;color:var(--primary);">فیلتر منبع:</label>
-        <select id="sourceFilter" onchange="renderBank('${courseId}')" style="padding:10px 16px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:0.9rem;">
-          <option value="all">همه سوالات</option>
-          <option value="authored_questions">تألیفی</option>
-          <option value="past_questions">ادوار گذشته</option>
-        </select>
-        <span id="bankCount" style="color:var(--text-muted);font-size:0.85rem;"></span>
+      <div class="bank-info">
+        📌 در این بخش فقط <strong>سوالات تألیفی</strong> (طراحی‌شده توسط تیم MedEx) نمایش داده می‌شود.
       </div>
       <div id="bankList"></div>`;
-    renderBank(courseId);
+    renderBank(courseId, 'authored_questions');
+  } else if (tab === 'past') {
+    content.innerHTML = `
+      <div class="bank-info">
+        📌 در این بخش فقط <strong>سوالات ادوار گذشته</strong> (آزمون‌های میان‌ترم و پایان‌ترم) نمایش داده می‌شود.
+      </div>
+      <div id="bankList"></div>`;
+    renderBank(courseId, 'past_questions');
   }
 }
 
-function renderBank(courseId) {
-  const filter = document.getElementById('sourceFilter').value;
-  const qs = getAllQuestions().filter(q =>
-    q.courseId === courseId && (filter === 'all' || q.sourceType === filter));
+function renderBank(courseId, sourceType) {
+  const qs = getAllQuestions().filter(q => q.courseId === courseId && q.sourceType === sourceType);
   const list = document.getElementById('bankList');
-  const countEl = document.getElementById('bankCount');
-  countEl.textContent = `${qs.length} سوال`;
-
   if (qs.length === 0) {
-    list.innerHTML = '<p style="color:var(--text-muted);">سوالی با این فیلتر یافت نشد.</p>';
+    list.innerHTML = '<p style="color:var(--text-muted);padding:20px;">سوالی در این بخش ثبت نشده است.</p>';
     return;
   }
-  list.innerHTML = qs.map((q, i) => `
-    <div class="question-card" style="margin-bottom:16px;">
-      <p style="font-size:0.8rem;color:var(--secondary);margin-bottom:8px;">
-        ${q.sourceType === 'authored_questions' ? '✍️ تألیفی' : '📋 ادوار گذشته'} | سطح: ${q.difficulty || '—'}
-      </p>
-      <p style="font-weight:600;margin-bottom:12px;">${i + 1}. ${q.stem}</p>
-      <ul style="list-style:none;padding:0;">
-        ${q.options.map(o => `
-          <li style="padding:8px 14px;margin-bottom:6px;border-radius:8px;
-            ${q.correctOptionIds.includes(o.id)
-              ? 'background:var(--success-bg);color:var(--success);font-weight:600;'
-              : 'background:var(--bg);'}">
-            ${o.text}
-          </li>
-        `).join('')}
-      </ul>
-      <div class="explanation" style="margin-top:12px;font-size:0.9rem;">
-        <strong>توضیح:</strong> ${q.explanation}
+
+  list.innerHTML = qs.map((q, i) => {
+    const tags = `
+      <span class="bank-tag ${sourceType === 'authored_questions' ? 'authored' : 'past'}">
+        ${sourceType === 'authored_questions' ? '✍️ تألیفی' : '📋 ادوار گذشته'}
+      </span>
+      <span class="bank-tag difficulty">سطح: ${q.difficulty || '—'}</span>
+    `;
+    return `<div class="bank-item">
+      <div class="bank-meta">${tags}</div>
+      <p class="bank-stem">${i + 1}. ${q.stem}</p>
+      ${q.options.map(o => {
+        const isCorrect = q.correctOptionIds.includes(o.id);
+        return `<div class="bank-option ${isCorrect ? 'correct' : ''}">
+          ${isCorrect ? '✅ ' : ''}${o.text}
+        </div>`;
+      }).join('')}
+      <div class="bank-explanation">
+        <strong>توضیح پاسخ:</strong> ${q.explanation}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
+// ========== نمایش خلاصه (تمیز و ساختاریافته) ==========
 function showSummary(courseId, topicId) {
   const s = getSummary(courseId, topicId);
   const content = document.getElementById('tabContent');
@@ -125,24 +123,89 @@ function showSummary(courseId, topicId) {
     return;
   }
 
+  // تبدیل متن خام به سکشن‌های ساختاریافته
+  const htmlContent = parseSummaryContent(s.content);
+
+  // ساخت مایندمپ
   let mindMapHtml = '';
   if (s.mindMap) {
-    mindMapHtml = `<div class="mindmap">
-      <div class="root">🧠 ${s.mindMap.root}</div>
-      ${s.mindMap.branches.map(b => `
-        <div class="branch">
-          <div class="branch-name">▸ ${b.name}</div>
-          ${b.children.map(c => `<div class="leaf">• ${c}</div>`).join('')}
+    mindMapHtml = `
+      <div class="mindmap-wrap">
+        <h3>🗺️ نقشه مفهومی</h3>
+        <div class="mindmap-root">${s.mindMap.root}</div>
+        <div class="mindmap-branches">
+          ${s.mindMap.branches.map(b => `
+            <div class="mindmap-branch">
+              <div class="mindmap-branch-title">${b.name}</div>
+              ${b.children.map(c => `<div class="mindmap-leaf">${c}</div>`).join('')}
+            </div>
+          `).join('')}
         </div>
-      `).join('')}
-    </div>`;
+      </div>`;
   }
 
   content.innerHTML = `
     <button class="btn-secondary" onclick="renderTab('summaries','${courseId}')" style="margin-bottom:16px;">← بازگشت به لیست</button>
-    <div class="summary-content">
-      <h2>${s.title}</h2>
-      <pre>${s.content}</pre>
+    <div class="summary-page">
+      <div class="summary-header">
+        <h2>📚 ${s.title}</h2>
+        <p>منبع: ${s.sourceFile || '—'}</p>
+      </div>
+      ${htmlContent}
       ${mindMapHtml}
     </div>`;
+}
+
+// تابع تبدیل متن خام به ساختار تمیز
+function parseSummaryContent(text) {
+  if (!text) return '';
+
+  const lines = text.split('\n');
+  let html = '';
+  let currentSection = null;
+  let inList = false;
+
+  const closeList = () => { if (inList) { html += '</ul>'; inList = false; } };
+  const closeSection = () => { if (currentSection) { closeList(); html += '</div>'; currentSection = null; } };
+
+  for (let raw of lines) {
+    const line = raw.trim();
+    if (!line) continue;
+
+    // تیتر سطح ۲ (##)
+    if (line.startsWith('## ')) {
+      closeSection();
+      html += `<div class="summary-section"><h3>${line.replace('## ', '')}</h3>`;
+      currentSection = true;
+      continue;
+    }
+
+    // تیتر سطح ۳ (###)
+    if (line.startsWith('### ')) {
+      closeList();
+      html += `<h4 style="color:var(--secondary);margin:12px 0 8px;">${line.replace('### ', '')}</h4>`;
+      continue;
+    }
+
+    // آیتم لیست
+    if (line.startsWith('- ') || line.startsWith('* ')) {
+      if (!inList) { html += '<ul>'; inList = true; }
+      let item = line.substring(2);
+      // بولد کردن با **...**
+      item = item.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      // کد درون خطی با `...`
+      item = item.replace(/`(.+?)`/g, '<code>$1</code>');
+      html += `<li>${item}</li>`;
+      continue;
+    }
+
+    // خطوط عادی
+    closeList();
+    let para = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html += `<p style="margin:8px 0;font-size:0.95rem;">${para}</p>`;
+  }
+
+  closeSection();
+  closeList();
+  return html;
 }
