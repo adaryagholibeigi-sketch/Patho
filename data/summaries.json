@@ -1,0 +1,189 @@
+{
+  "summaries": [
+    {
+      "id": "s_neuro_injury",
+      "courseId": "neuropathology",
+      "topicId": "neuro_injury",
+      "title": "آسیب نورون و گلیا",
+      "content": "## واکنش نورون\n- نورون‌ها Fixed postmitotic هستند و اختلال قابل توجهی دارند.\n- **Red Neuron:** ۴-۸ ساعت hypoxia حاد (واکوئل)؛ ۱۲-۱۴ ساعت انوزینوفیلی + پیکنوز.\n- **مزمن** (ALS) + آتروفی ساده.\n- **کروماتولیز مرکزی.**\n\n## اینکلوزن‌ها (حفظ کن)\n- Cowdry = HSV = هسته\n- Negri = هاری = سیتوپلاسم\n- CMV = بزرگ\n- NFT = آلزایمر | Lewy = پارکینسون | واکوئل = CJD\n\n## گلیا\n- میکروگلیا = تنها مزودرمی = ماکروفاژ CNS\n- GFAP+ = آستروسیت | GFAP- = نورون\n- هیپرپلازی آستروسیت + فیبروز = گلیوز (فیبروز مغزی)\n\n## واکنش گلیالی\n- Rosenthal ← آستروسیتوم پیلوسیتیک\n- Corpora Amylacea ← PAS+\n- Lafora ← صرع میوکلونیک\n- آستروسیت نوع II (نام گمراه‌کننده) ← سیروز/ویلسون (نه آلزایمر)\n\n## ادم مغزی\n- وازوژنیک (BBB) | سایتوتوکسیک (آسیب پمپ Na-K)\n\n## فتق مغزی\n- اونکال: انحراف چشم + مردمک\n- تونسیلار: ایست قلبی-تنفسی\n- زیرفالسین: Duret hemorrhage\n\n## NTD\n- شایع‌ترین = اسپینا بیفیدا\n- کمبود اسید فولیک | AFP + سونو ۱۸ هفته\n- مادر دیابتی + تریزومی ۱۳ = هولوپروزنسفالی\n- الکل/تریزومی ۲۱/HIV = میکروسفالی",
+      "mindMap": {
+        "root": "آسیب نورون و گلیا",
+        "branches": [
+          { "name": "واکنش نورون", "children": ["Red Neuron (4-8h واکوئل، 12-14h پیکنوز)", "آتروفی ساده (ALS)", "کروماتولیز مرکزی"] },
+          { "name": "اینکلوزن‌ها", "children": ["Cowdry = HSV (هسته)", "Negri = هاری (سیتوپلاسم)", "CMV (بزرگ)", "NFT = آلزایمر", "Lewy = پارکینسون"] },
+          { "name": "گلیا", "children": ["میکروگلیا = مزودرمی", "GFAP+ = آستروسیت", "گلیوز = فیبروز مغزی"] },
+          { "name": "ادم و فتق", "children": ["وازوژنیک = BBB", "سایتوتوکسیک = پمپ Na-K", "تونسیلار = ایست قلبی", "اونکال = مردمک"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۱",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_neuro_trauma",
+      "courseId": "neuropathology",
+      "topicId": "neuro_trauma",
+      "title": "تروما و ضایعات عروقی",
+      "content": "## قانون طلایی\n- **محل ضایعه > حجم ضایعه**\n\n## سه ضایعه پارانشیمی\n- Concussion ← آمنزی\n- Contusion ← گوه‌ای + صرع پس ضربه\n- Laceration ← خطر فتق\n\n## CVA\n- سومین علت مرگ\n- ترتیب شیوع: ترومبوز < آمبولی < خونریزی (Berry)\n- Watershed = پرخطرترین در افت فشار\n- ترومبوز شایع = دو شاخه کاروتید\n- آمبولی شایع = ترومبوز جداره قلب بعد MI\n\n## هموراژیک vs آنمیک\n- هموراژیک: بعد آمبولی، آنتی‌کواگولانت ممنوع\n- آنمیک: بعد ترومبوز\n\n## خونریزی غیرتروماتیک\n- HTN > 50% | شارکو-بوشارد = پوتامن\n- Berry: فراوان‌ترین آنوریسم، رتبه ۴ CVA، سردرد خنجری SAH\n- لوب بدون HTN = آمیلوئیدی\n\n## هماتوم\n- اپیدورال: شریان مننژال میانی، عدسی، سریع\n- ساب‌دورال: ورید پل‌زننده، هلالی، ۴۸ ساعت",
+      "mindMap": {
+        "root": "تروما و ضایعات عروقی",
+        "branches": [
+          { "name": "تروما", "children": ["Concussion = آمنزی", "Contusion = گوه‌ای", "اپیدورال = عدسی", "ساب‌دورال = هلالی"] },
+          { "name": "CVA", "children": ["ترومبوز < آمبولی < خونریزی", "Watershed = افت فشار", "کاروتید = شایع‌ترین ترومبوز"] },
+          { "name": "آنوریسم", "children": ["Berry = SAH + سردرد خنجری", "شارکو-بوشارد = پوتامن"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۲",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_neuro_infection",
+      "courseId": "neuropathology",
+      "topicId": "neuro_infection",
+      "title": "عفونت و دژنراتیو",
+      "content": "## راه ورود\n- هماتوژن (شایع) < کاشته < گسترش < عصب\n\n## مننژیت — عوامل بر اساس سن\n- نوزاد: E.coli + Strep B\n- کودک: هموفیلوس\n- جوان: نایسریا\n- مسن: پنوموکوک + لیستریا\n\n## CSF (کلیدی)\n- چرکی: گلوکز↓ + نوتروفیل\n- آسپتیک: گلوکز نرمال + لنفوسیت\n- آبسه: گلوکز نرمال (تفاوت با چرکی)\n- سل: قاعده + گرانولوم + جایت سل\n\n## نوروسفلیس (۴ شکل)\n- تابس (ریشه حسی خلفی + شارکو) | مننگو | مننگوواسکولار | پارتیک\n\n## ویروسی\n- HSV-1: لوب تمپورال + Cowdry\n- پولیو: شاخ قدامی + فلج شل\n- HIV: دمانس جوان + میلیوپاتی واکوئولار\n\n## MS\n- مجزا زمانی-مکانی | زنان ×۲ | اطراف بطن لترال\n- باند الیگوکلونال CSF\n- نوریت اپتیک: شایع‌ترین تظاهر اولیه اما فقط ۱۰-۵۰٪ نهایتاً MS\n\n## آلزایمر\n- شایع‌ترین دمانس سالمندان\n- Aβ اختصاصی‌ترین | NFT = همبستگی بالینی\n- آنژیوپاتی آمیلوئیدی + پلاک سالخوردگی",
+      "mindMap": {
+        "root": "عفونت و دژنراتیو",
+        "branches": [
+          { "name": "مننژیت", "children": ["نوزاد = E.coli + Strep B", "چرکی = گلوکز↓ + نوتروفیل", "سل = قاعده + گرانولوم"] },
+          { "name": "ویروسی", "children": ["HSV = لوب تمپورال + Cowdry", "پولیو = شاخ قدامی", "هاری = Negri"] },
+          { "name": "MS", "children": ["مجزا زمانی-مکانی", "اطراف بطن لترال", "باند الیگوکلونال"] },
+          { "name": "آلزایمر", "children": ["Aβ = پلاک", "NFT = بالینی", "آنژیوپاتی آمیلوئیدی"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۳",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_neuro_tumor",
+      "courseId": "neuropathology",
+      "topicId": "neuro_tumor",
+      "title": "تومورهای CNS",
+      "content": "## گلیوم = شایع‌ترین تومور مغزی\n\n## آستروسیتوما (طیف)\n- G1 فیریلر ← G2-G3 آناپلاستیک ← G4 GBM\n- **GBM:** نکروز + تکثیر عروقی + پسودوپالیسیدینگ؛ بقا ۸-۱۰ ماه\n- Pilocytic: کیست + ندول، خوش‌خیم، کودکان\n\n## سایر گلیوم\n- اولیگودندرولگیوما: fried egg + ۹۰٪ کلسیفیکاسیون\n- اپاندیموما: Rosette + Perivascular pseudorosette\n\n## تومور کودکان\n- مدولوبلاستوما: مخچه + carrot-shaped + حساس به رادیو\n\n## مننژیوما\n- پساموما: سوماتوز/ترانزیشنال/مننگوتلیال\n- عود: پاپیلار/آتیپیک/آناپلاستیک\n\n## متاستاز CNS\n- نیمی از تومورهای مغزی\n- ریه > پستان > ملانوما > کلیه\n\n## حدود ضایعه\n- متاستاز (مشخص) < لنفوم < گلیوم (نامشخص)\n\n## سایر\n- لنفوم اولیه: perivascular cuffing + ایدز\n- Germinoma: اول گناد رد شود",
+      "mindMap": {
+        "root": "تومورهای CNS",
+        "branches": [
+          { "name": "گلیوم", "children": ["GBM = نکروز + عروقی + پسودوپالیسیدینگ", "اولیگودندرولگیوما = fried egg", "اپاندیموما = pseudorosette"] },
+          { "name": "کودکان", "children": ["مدولوبلاستوما = مخچه + carrot-shaped", "Pilocytic = کیست + ندول"] },
+          { "name": "سایر", "children": ["مننژیوما = پساموما", "متاستاز = ریه > پستان", "لنفوم = perivascular cuffing"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۴",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_neuro_peripheral",
+      "courseId": "neuropathology",
+      "topicId": "neuro_peripheral",
+      "title": "عصب محیطی و عضله",
+      "content": "## واحد حرکتی\n- آکسون + فیبر عضلانی + LMN\n\n## آسیب عصب\n- والرین ← بخش دیستال\n- بازسازی = ۲ mm/روز\n- Onion bulb = دمیلیناسیون مزمن\n- بیوپسی عصب = سورال\n\n## GBS\n- فلج صعودی از پا + پروتئین↑ بدون پلئوسیتوز\n\n## HMSN I\n- شایع‌ترین نوروپاتی ارثی، دمیلینه، شروع کودکی\n\n## نوروپاتی دیابتی\n- شایع‌ترین = حسی-حرکتی دیستال قرینه؛ آکسونال\n\n## DMD\n- CPK بالا | دیستروفین غایب | X-linked\n- هیپرتروفی کاذب | مرگ ۲۰ سالگی\n- BMD: دیستروفین ناقص، خفیف‌تر\n\n## دیستروفی مایوتونیک\n- مایوتونیا + پتوز + کاتاراکت + Ring fiber\n\n## MG\n- بیماری جانکشن (AchR) + تست تنسیلون\n- هایپرپلازی تیموس ۶۵٪ | تیموما ۱۰٪",
+      "mindMap": {
+        "root": "عصب محیطی و عضله",
+        "branches": [
+          { "name": "عصب", "children": ["والرین = دیستال", "بازسازی = ۲mm/روز", "Onion bulb = مزمن"] },
+          { "name": "نوروپاتی", "children": ["GBS = صعودی", "HMSN I = ارثی", "دیابتی = آکسونال"] },
+          { "name": "عضله", "children": ["DMD = دیستروفین غایب", "Myotonic = Ring fiber", "MG = تست تنسیلون"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۵",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_heme_basics",
+      "courseId": "hematology",
+      "topicId": "heme_basics",
+      "title": "مبانی آنمی و همولیز",
+      "content": "## سه مکانیسم آنمی\n- Blood Loss | Hemolytic | Impaired Production\n\n## همولیز\n- ↑هپاتواسپلنومگالی | رتیکولوسیت↑ | M:E↓ | ↑تخریب | احتباس آهن\n- مغز استخوان هیپرپلاستیک (نه هیپوپلاستیک)\n\n## Intra vs Extra\n- داخل: هموگلوبینوری + هاپتوگلوبین↓ (کمتر شایع)\n- خارج: تخریب طحالی (شایع‌تر)\n\n## خونریزی حاد\n- زودرس‌ترین = لکوسیتوز\n\n## اسفروسیتوز ارثی\n- نقص اسپکترین/آنکیرین/باند ۳\n- MCHC بالا + MCV نرمال\n- کومبس منفی\n- اسپلنکتومی\n- بحران آپلاستیک با پاروویروس B19\n\n## G6PD\n- Heinz + Bite cell\n- محرک: باقلا/پریماکین/سولفانامید\n\n## PNH\n- PIG-A | GPI anchor | CD55/CD59\n\n## AIHA\n- Warm (IgG): SLE/دارو، کومبس\n- Cold (IgM): رینود، مایکوپلاسما/EBV\n\n## MAHA\n- ترومبوسیتوپنی + شیزوسیت (DIC/TTP/HUS)",
+      "mindMap": {
+        "root": "مبانی آنمی و همولیز",
+        "branches": [
+          { "name": "طبقه‌بندی", "children": ["Blood Loss", "Hemolytic", "Impaired Production"] },
+          { "name": "همولیز", "children": ["مغز استخوان هیپرپلاستیک", "Intra = هموگلوبینوری", "Extra = تخریب طحالی"] },
+          { "name": "بیماری‌ها", "children": ["اسفروسیتوز = MCHC بالا", "G6PD = Bite cell", "PNH = GPI anchor", "AIHA = کومبس"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۶",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_heme_thalassemia",
+      "courseId": "hematology",
+      "topicId": "heme_thalassemia",
+      "title": "تالاسمی‌ها",
+      "content": "## بتا تالاسمی\n- مینور = HbA2↑\n- ماژور = HbF↑ + Iron overload\n\n## آلفا تالاسمی (حذف ژنی)\n- ۱ = Silent\n- ۲ = Minor\n- ۳ = HbH (β4)\n- ۴ = Hydrops fetalis (Hb Bart γ4)",
+      "mindMap": {
+        "root": "تالاسمی‌ها",
+        "branches": [
+          { "name": "بتا", "children": ["مینور = HbA2↑", "ماژور = HbF↑"] },
+          { "name": "آلفا", "children": ["۱ = Silent", "۲ = Minor", "۳ = HbH", "۴ = Hydrops"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۷",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_heme_decreased",
+      "courseId": "hematology",
+      "topicId": "heme_decreased",
+      "title": "کاهش تولید و پلی‌سیتمی",
+      "content": "## IDA\n- بزرگسال مرد = خونریزی GI\n- آهن↓، TIBC↑، فریتین↓\n\n## ACD\n- آهن↓، TIBC↓، فریتین↑\n- هیسیدین↑\n\n## مگالوبلاستیک\n- MCV↑ | MCHC نرمال\n- B12: علائم عصبی + هایپرسگمانته\n\n## آپلاستیک\n- پان‌سیتوپنی + طحال نرمال + Dry tap\n\n## PV\n- JAK2 | EPO↓ | LAP↑ | Budd-Chiari",
+      "mindMap": {
+        "root": "کاهش تولید و پلی‌سیتمی",
+        "branches": [
+          { "name": "IDA", "children": ["TIBC↑", "فریتین↓", "خونریزی GI"] },
+          { "name": "ACD", "children": ["TIBC↓", "فریتین↑", "هیسیدین"] },
+          { "name": "مگالوبلاستیک", "children": ["MCV↑", "B12 = عصبی"] },
+          { "name": "آپلاستیک", "children": ["طحال نرمال", "Dry tap"] },
+          { "name": "PV", "children": ["JAK2", "EPO↓", "LAP↑"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۸",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_heme_wbc",
+      "courseId": "hematology",
+      "topicId": "heme_wbc",
+      "title": "WBC و لنفوئید",
+      "content": "## WBC\n- نوتروفیلی: Döhle + توکسیک\n- ائوزینوفیلی: آلرژی/انگل/CML\n- مونوسیتوز: TB/RA/SLE\n- لنفوسیتوز: B-cell = ویروس\n\n## EBV\n- مونواسپات + لنفوسیت آتیپیک CD8+ + لنفادنوپاتی + گلودرد\n\n## SLL/CLL\n- شایع‌ترین لوسمی بزرگسالان\n- CD5+، BCL2+، Smudge cell\n- آستانه ۴۰۰۰ (Passline) / ۵۰۰۰ (WHO)\n\n## فولیکولار\n- BCL2+، t(14;18) | فولیکول‌های یکسان\n\n## MCL\n- CD5+، Cyclin D1+، t(11;14) | لنفوماتوئید پولیپوزیس\n\n## DLBCL\n- شایع‌ترین NHL | Ki-67 بالا\n\n## Burkitt\n- t(8;14) | MYC | Starry Sky | فک آفریقا\n\n## HCL\n- مرد مسن + طحال بزرگ + TRAP+\n\n## MM\n- CRAB + Punch-out + M component (IgG 60%) + Bence Jones\n\n## Hodgkin\n- Nodular Sclerosis = Lacunar (جوان، مدیاستن)\n- Mixed Cellularity = EBV ۷۰٪\n- Lymphocyte-Depletion = نادرترین\n- Lymphocyte-Predominance = Popcorn",
+      "mindMap": {
+        "root": "WBC و لنفوئید",
+        "branches": [
+          { "name": "WBC", "children": ["Döhle = باکتریال", "ائوزینوفیلی = آلرژی", "مونوسیتوز = TB"] },
+          { "name": "لنفوم B", "children": ["CLL = Smudge", "MCL = Cyclin D1", "Burkitt = Starry Sky", "HCL = TRAP"] },
+          { "name": "پلاسماسل", "children": ["MM = CRAB + M component"] },
+          { "name": "Hodgkin", "children": ["Nodular = Lacunar", "Mixed = EBV", "LP = Popcorn"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۹",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_heme_leukemia",
+      "courseId": "hematology",
+      "topicId": "heme_leukemia",
+      "title": "لوسمی و MDS/MPN",
+      "content": "## ALL\n- کودکان (اوج ۴ سال) | TdT+ | PAS+ | T-cell = مدیاستن\n\n## AML\n- میانگین ۵۰ | Auer rod | MPO+\n- M3: t(15;17) + DIC + ATRA\n\n## MDS\n- مغز استخوان پر + خون محیطی خالی\n- RARS = رینگ سیدروبلاست\n- Pseudo-Pelger-Huet = دیسگرانولوپویز\n- حذف 5q/7q\n\n## CML\n- BCR-ABL ~۹۵٪ | WBC ۱۰۰,۰۰۰+ | دوقله‌ای | LAP↓\n\n## PV\n- JAK2 | EPO↓ | LAP↑\n\n## ET\n- JAK2 | پلاکت > ۶۰۰,۰۰۰ | بدون اسپلنومگالی | Ph-\n\n## میلوفیبروز\n- TGFβ/PDGF | tear-drop + NRBC | طحال بزرگ\n\n## تیموما\n- WHO: A/AB/B1/B2/B3/C | C = تیموکارسینوما\n- آپلازی RBC | MG",
+      "mindMap": {
+        "root": "لوسمی و MDS/MPN",
+        "branches": [
+          { "name": "لوسمی حاد", "children": ["ALL = کودکان + TdT", "AML = Auer rod", "M3 = t(15;17) + DIC"] },
+          { "name": "MDS", "children": ["مغز پر + خون خالی", "حذف 5q/7q"] },
+          { "name": "MPN", "children": ["CML = BCR-ABL", "PV = JAK2 + EPO↓", "ET = پلاکت بالا", "میلوفیبروز = tear-drop"] },
+          { "name": "تیموما", "children": ["C = کارسینوما", "آپلازی RBC"] }
+        ]
+      },
+      "sourceFile": "خلاصه مرور سریع - بخش ۱۰",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "s_golden_30",
+      "courseId": "neuropathology",
+      "topicId": "neuro_injury",
+      "title": "۳۰ نکته طلایی شب امتحان",
+      "content": "## اعصاب (۱۵)\n1. Red Neuron = ۱۲-۱۴h\n2. Negri = هاری/سیتوپلاسم | Cowdry = HSV\n3. میکروگلیا = تنها مزودرمی\n4. GFAP+ = آستروسیت\n5. گلیوز = فیبروز مغزی\n6. آستروسیت نوع II = سیروز (نه آلزایمر)\n7. اونکال = مردمک | تونسیلار = ایست قلبی\n8. اسپینا بیفیدا = شایع‌ترین NTD\n9. Concussion = آمنزی\n10. هلالی = ساب‌دورال | عدسی/شریان = اپیدورال\n11. Berry = رتبه ۴ CVA\n12. شارکو-بوشارد = پوتامن\n13. MS = مجزا/اطراف بطن/باند\n14. GBM = نکروز+عروقی+پسودوپالیسیدینگ\n15. GBS = صعودی/پروتئین↑/WBC نرمال\n\n## خون (۱۵)\n16. همولیز = مغز استخوان هیپرپلاستیک\n17. کومبس = اسفروسیتوز | AIHA = کومبس\n18. G6PD = Heinz+Bite\n19. PNH = GPI anchor/CD55-59\n20. HbA2↑ = تالاسمی مینور\n21. HbH = حذف ۳ ژن\n22. IDA = خونریزی GI\n23. ACD = هیسیدین↑/فریتین↑/TIBC↓\n24. مگالوبلاستیک = MCHC نرمال\n25. Dry tap = آپلاستیک\n26. PV = JAK2/EPO↓\n27. CML = BCR-ABL/LAP↓\n28. CLL = Smudge/CD5+\n29. Burkitt = Starry Sky/t(8;14)\n30. AML M3 = t(15;17)/DIC",
+      "mindMap": null,
+      "sourceFile": "خلاصه مرور سریع - بخش ۱۱",
+      "reviewStatus": "approved"
+    }
+  ]
+}
